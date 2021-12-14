@@ -6,29 +6,29 @@
 <script>
     export default {
         mounted() {
-            var canvas = document.querySelector('.the-canvas');
-            var context = canvas.getContext('2d');
-            var ratio = window.devicePixelRatio || 1;
+            let canvas = document.querySelector('.the-canvas');
+            let context = canvas.getContext('2d');
+            let ratio = window.devicePixelRatio || 1;
 
-            var totalLineHeight = 680;
-            var totalLines = 4;
-            var totalDiff = totalLineHeight / totalLines;
-            var fontHeight = 60 * ratio - 50; // Small centering
+            let totalLineHeight = 680;
+            let totalLines = 4;
+            let totalDiff = totalLineHeight / totalLines;
+            let fontHeight = 60 * ratio - 50; // Small centering
 
-            var smallestWidth = 280; // width of smallest line;
-            var offsetX = 12;
-            var offsetY = 6;
-            var iterations;
-            var verticalAlign,
+            let smallestWidth = 280; // width of smallest line;
+            let offsetX = 12;
+            let offsetY = 6;
+            let iterations;
+            let verticalAlign,
                 line1Diff,
                 line2Diff,
                 line3Diff,
                 line4Diff,
                 iteration,
                 animationFrame;
-            var startRGB = [255, 255, 255];
-            var endRGB = [220, 165, 163];
-            var fullColorSet = [];
+            let startRGB = [255, 255, 255];
+            let endRGB = [220, 165, 163];
+            let fullColorSet = [];
 
             init();
 
@@ -62,25 +62,20 @@
                     ((window.innerWidth * ratio / 2) - (smallestWidth * ratio / 2)) / offsetX + 5
                 );
                 prepareColorSets(iterations);
-
                 iteration = 0;
-
                 animationFrame = requestAnimationFrame(draw);
             }
 
             // Draw loop
             function draw() {
-
                 context.clearRect(0, 0, canvas.width, canvas.height);
-
-                for (var i = iterations - 1; i > 0; i--) {
+                for (let i = iterations - 1; i > 0; i--) {
                     context.fillStyle = 'rgb(' + fullColorSet[i][0] + ',' + fullColorSet[i][1] +
                             ',' + fullColorSet[i][2] + ')';
-                    var x = window.innerWidth / 2 * ratio - i * offsetX;
-                    var y = verticalAlign + i * offsetY + (Math.sin(i + iteration) * 2);
+                    let x = window.innerWidth / 2 * ratio - i * offsetX;
+                    let y = verticalAlign + i * offsetY + (Math.sin(i + iteration) * 2);
                     drawText(x, y);
                 }
-
                 iteration += 0.1;
                 animationFrame = requestAnimationFrame(draw);
             }
@@ -104,7 +99,7 @@
             // We do this so we don't have to calculate these EVERY loop.
             function prepareColorSets(iterations) {
                 fullColorSet = [];
-                for (var i = 0; i < iterations; i++) {
+                for (let i = 0; i < iterations; i++) {
                     fullColorSet.push(colourGradientor(1 - i / iterations, startRGB, endRGB));
                 }
             }
@@ -113,17 +108,16 @@
             // http://stackoverflow.com/questions/14482226/how-can-i-get-the-color-halfway-between-two-colors
             function colourGradientor(p, rgb_beginning, rgb_end) {
 
-                var w = p * 2 - 1;
-                var w1 = (w + 1) / 2.0;
-                var w2 = 1 - w1;
-                var rgb = [
+                let w = p * 2 - 1;
+                let w1 = (w + 1) / 2.0;
+                let w2 = 1 - w1;
+                let rgb = [
                     parseInt(rgb_beginning[0] * w1 + rgb_end[0] * w2),
                     parseInt(rgb_beginning[1] * w1 + rgb_end[1] * w2),
                     parseInt(rgb_beginning[2] * w1 + rgb_end[2] * w2)
                 ];
                 return rgb;
             }
-
             window.onresize = init;
         }
     }
