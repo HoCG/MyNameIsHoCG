@@ -135,9 +135,9 @@
             width: 100%;
             height: 100%;
             filter: grayscale(100%);
-            background-image: url("./assets/logo.png") !important;
-            background-size: 120%;
-            background-position: 60%;
+            background-image: url("./assets/profileIMG.jpg") !important;
+            background-size: 100%;
+            background-position: 50%;
             background-repeat: none;
         }
     }
