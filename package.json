@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@nuxtjs/vuetify": "^1.12.3",
+    "bezier-easing": "^2.1.0",
     "core-js": "^3.6.5",
     "gsap": "^3.8.0",
     "vue": "^2.6.11",
