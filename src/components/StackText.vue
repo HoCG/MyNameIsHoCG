@@ -1,7 +1,5 @@
 <template>
-    <v-card>
-        <canvas class="the-canvas"></canvas>
-    </v-card>
+    <canvas class="the-canvas"></canvas>
 </template>
 <script>
     export default {
@@ -10,7 +8,7 @@
             let context = canvas.getContext('2d');
             let ratio = window.devicePixelRatio || 1;
 
-            let totalLineHeight = 680;
+            let totalLineHeight = 560;
             let totalLines = 4;
             let totalDiff = totalLineHeight / totalLines;
             let fontHeight = 60 * ratio - 50; // Small centering
@@ -82,7 +80,6 @@
 
             // Draw the single lines of text.
             function drawText(x, y) {
-
                 context.fillText("The Most", x, y + line4Diff);
                 context.strokeText("The Most", x, y + line4Diff);
 
@@ -125,8 +122,8 @@
 <style>
     @import url('https://fonts.googleapis.com/css?family=Montserrat:700');
     canvas {
-        width: 100%;
-        height: 100%;
+        width: 50%;
+        height: 50%;
         background: #F3BE4E;
     }
 </style>

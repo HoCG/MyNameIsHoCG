@@ -1,6 +1,9 @@
 <template>
     <v-app>
         <main class="sticky-container" ref="sticky-container">
+            <div class="firstScreen">
+                <h1><span>"WELCOME&nbsp;</span></h1><h1><span>&nbsp;TO&nbsp;</span><span>&nbsp;HoCG!"</span></h1>
+            </div>
             <div class="sticky">
                 <div class="slide-container">
                     <div class="slide" ref="sl1">
@@ -14,8 +17,8 @@
                     </div>
                     <div class="slide" ref="sl2">
                         <div class="slide-big-text">
-                            <p>처음 뵙겠습니다.</p>
-                            <StackText width="50%"/>
+                            <p>저의 다양한 컨텐츠 제작 능력들을 소개해드리죠.</p>
+                            <StackText/>
                         </div>
                     </div>
                     <div class="slide sl3" ref="sl3">
@@ -375,10 +378,7 @@
         element.style[styleName] = value;
     };
 
-    export default {
-        name: 'HelloWorld',
-        data() {
-        },        
+    export default {      
         components: {
             MainView,
             StackText
@@ -536,7 +536,67 @@
 </script>
 
 <style lang="scss" > 
+@import url("https://fonts.googleapis.com/css?family=Luckiest+Guy&display=swap");
 
+.firstScreen {
+  background: radial-gradient(
+    circle,
+    //rgba(255, 252, 0, 1) 0%,
+    //rgba(240, 237, 23, 1) 100%
+  );
+  height: 500px;
+}
+
+.firstScreen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Luckiest Guy", cursive;
+}
+
+.firstScreen > h1 {
+  margin: 0;
+  font-size: 8em;
+  padding: 0;
+  color: white;
+  text-shadow: 0 0.1em 20px rgba(0, 0, 0, 1), 0.05em -0.03em 0 rgba(0, 0, 0, 1),
+    0.05em 0.005em 0 rgba(0, 0, 0, 1), 0em 0.08em 0 rgba(0, 0, 0, 1),
+    0.05em 0.08em 0 rgba(0, 0, 0, 1), 0px -0.03em 0 rgba(0, 0, 0, 1),
+    -0.03em -0.03em 0 rgba(0, 0, 0, 1), -0.03em 0.08em 0 rgba(0, 0, 0, 1), -0.03em 0 0 rgba(0, 0, 0, 1);
+  .firstScreen > span {
+    transform: scale(0.9);
+    display: inline-block;
+  }
+  .firstScreen > span:first-child {
+    animation: bop 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards infinite
+      alternate;
+  }
+  .firstScreen > span:last-child {
+    animation: bopB 1s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards
+      infinite alternate;
+  }
+}
+
+@keyframes bop {
+  0% {
+    transform: scale(0.9);
+  }
+  50%,
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes bopB {
+  0% {
+    transform: scale(0.9);
+  }
+  80%,
+  100% {
+    transform: scale(1) rotateZ(-3deg);
+  }
+}
+//이 아래부터는 길게 자연스럽게 나아가는 html 구조를 위한 scss
 body {
     padding: 0;
     margin: 0;
